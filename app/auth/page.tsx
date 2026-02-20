@@ -30,7 +30,7 @@ export default async function AuthPage({
         <div className="flex items-center justify-between">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-sm text-zinc-600 transition hover:border-cyan-300 hover:bg-cyan-50/50 hover:text-cyan-700 active:scale-95"
+            className="inline-flex items-center gap-2 rounded-full border border-stone-200 bg-white px-3 py-1.5 text-sm text-stone-600 transition hover:border-amber-300 hover:bg-amber-50/50 hover:text-amber-700 active:scale-95"
           >
             <ArrowLeft className="size-4" />
             Back to feed
@@ -38,13 +38,13 @@ export default async function AuthPage({
         </div>
 
         {!authEnabled ? (
-          <div className="rounded-xl border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
+          <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
             Auth geçici olarak kapalı; entegrasyon korunuyor. Test sürecinde login akışları pasif.
           </div>
         ) : null}
 
         <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-          <Card className="border-zinc-200 bg-white shadow-sm">
+          <Card className="border-stone-200 bg-white shadow-sm">
             <CardHeader>
               <CardTitle className="text-2xl">Welcome to DetailVerse</CardTitle>
               <CardDescription>
@@ -78,19 +78,19 @@ export default async function AuthPage({
               </form>
 
               <div className="relative text-center">
-                <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-zinc-200" />
-                <span className="relative bg-white px-2 text-xs tracking-[0.14em] text-zinc-500 uppercase">
+                <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-stone-200" />
+                <span className="relative bg-white px-2 text-xs tracking-[0.14em] text-stone-500 uppercase">
                   Or use email
                 </span>
               </div>
 
               <form action={signInWithPasswordAction} className="space-y-3">
                 <label className="block space-y-2">
-                  <span className="text-sm font-medium text-zinc-700">Email</span>
+                  <span className="text-sm font-medium text-stone-700">Email</span>
                   <Input name="email" type="email" autoComplete="email" required disabled={!authEnabled} />
                 </label>
                 <label className="block space-y-2">
-                  <span className="text-sm font-medium text-zinc-700">Password</span>
+                  <span className="text-sm font-medium text-stone-700">Password</span>
                   <Input
                     name="password"
                     type="password"
@@ -112,7 +112,7 @@ export default async function AuthPage({
             </CardContent>
           </Card>
 
-          <Card className="border-cyan-200 bg-white shadow-[0_0_40px_-24px_rgba(6,182,212,0.25)]">
+          <Card className="border-amber-200 bg-white shadow-[0_0_40px_-24px_rgba(245,158,11,0.25)]">
             <CardHeader>
               <CardTitle>Create your account</CardTitle>
               <CardDescription>
@@ -122,11 +122,11 @@ export default async function AuthPage({
             <CardContent className="space-y-5">
               <form action={signUpWithPasswordAction} className="space-y-3">
                 <label className="block space-y-2">
-                  <span className="text-sm font-medium text-zinc-700">Email</span>
+                  <span className="text-sm font-medium text-stone-700">Email</span>
                   <Input name="email" type="email" autoComplete="email" required disabled={!authEnabled} />
                 </label>
                 <label className="block space-y-2">
-                  <span className="text-sm font-medium text-zinc-700">Password</span>
+                  <span className="text-sm font-medium text-stone-700">Password</span>
                   <Input
                     name="password"
                     type="password"
@@ -141,14 +141,14 @@ export default async function AuthPage({
                 </Button>
               </form>
 
-              <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-600">
-                <p className="mb-2 inline-flex items-center gap-2 text-zinc-700">
-                  <Mail className="size-4 text-cyan-600" />
+              <div className="rounded-xl border border-stone-200 bg-stone-50 p-4 text-sm text-stone-600">
+                <p className="mb-2 inline-flex items-center gap-2 text-stone-700">
+                  <Mail className="size-4 text-amber-600" />
                   Email verification may be required depending on your Supabase settings.
                 </p>
-                <p className="inline-flex items-center gap-2 text-zinc-700">
-                  <ShieldCheck className="size-4 text-cyan-600" />
-                  Add <code className="rounded border border-zinc-200 bg-white px-1 py-0.5">/auth/callback</code> to allowed
+                <p className="inline-flex items-center gap-2 text-stone-700">
+                  <ShieldCheck className="size-4 text-amber-600" />
+                  Add <code className="rounded border border-stone-200 bg-white px-1 py-0.5">/auth/callback</code> to allowed
                   redirect URLs in Supabase Auth.
                 </p>
               </div>

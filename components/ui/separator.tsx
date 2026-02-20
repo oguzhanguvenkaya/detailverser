@@ -17,7 +17,7 @@ function Separator({
       aria-orientation={orientation}
       data-slot="separator"
       className={cn(
-        "shrink-0 bg-zinc-800",
+        "shrink-0 bg-stone-200",
         orientation === "horizontal" ? "h-px w-full" : "h-full w-px",
         className,
       )}

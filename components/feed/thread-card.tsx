@@ -62,7 +62,7 @@ export function ThreadCard({ thread, children }: ThreadCardProps) {
           <div className="relative h-48 overflow-hidden rounded-xl border border-stone-200 bg-stone-100">
             <Image
               src={thread.previewImageUrl}
-              alt="Thread preview image"
+              alt={`Preview for: ${thread.title}`}
               fill
               className="object-cover transition-transform duration-700 hover:scale-[1.02]"
             />

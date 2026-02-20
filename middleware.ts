@@ -3,7 +3,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import { isAuthEnabled } from "@/lib/features/auth";
 import { updateSession } from "@/lib/supabase/middleware";
 
-export async function proxy(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   if (!isAuthEnabled()) {
     return NextResponse.next({
       request,

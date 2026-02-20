@@ -48,7 +48,14 @@ export function TopNavbar({ user, authEnabled }: TopNavbarProps) {
         </div>
 
         <div className="ml-auto flex items-center gap-2">
-          <div className="rounded-full border border-cyan-500/40 bg-cyan-500/12 px-3 py-1 text-xs font-semibold text-cyan-200 shadow-[0_0_24px_rgba(6,182,212,0.28)] sm:text-sm">
+          <button
+            type="button"
+            aria-label="Search"
+            className="group inline-flex size-10 items-center justify-center rounded-full border border-stone-200 bg-white/50 text-stone-600 transition-all hover:border-amber-300 hover:bg-amber-50/50 hover:text-amber-700 active:scale-95 md:hidden"
+          >
+            <Search className="size-4" />
+          </button>
+          <div className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700 sm:text-sm">
             AI Credits: {aiCredits} \ud83e\ude99
           </div>
 
