@@ -1,0 +1,251 @@
+Yapılan Değişikliklerin Özeti                                                                                                           
+                                                                                                                                          
+  Büyük bir güncelleme yapılmış. Değişiklikleri kategorize ediyorum:                                                                      
+
+  Tema Değişimi: Dark Mode → Light Mode
+
+  - Renk paleti: zinc-950 (koyu) → stone-50 (açık), cyan → amber/orange vurgu rengi
+  - Font: Inter → Outfit
+  - Arka plan: Koyu radial gradient → açık amber tonlarında gradient
+  - Glassmorphism: bg-zinc-900/70 → bg-white/60 backdrop-blur-xl
+
+  Önceki Rapordaki Çözülen Sorunlar
+
+  ┌─────────────────────────────────────┬───────────────────────────────────────────────────────────────────────┐
+  │             Eski Sorun              │                                 Durum                                 │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ <h1> eksikliği                      │ Çözüldü — page.tsx:32 sr-only h1 eklendi                              │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ Sidebar <p> başlıkları              │ Çözüldü — <h2> yapıldı (left-sidebar.tsx, right-sidebar.tsx)          │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ aria-label eksik sidebar'lar        │ Çözüldü — aria-label="Main navigation", aria-label="AI Agent..."      │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ href="#" kullanımları               │ Çözüldü — <button> elementlerine dönüştürüldü                         │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ Vote butonları küçük (28px)         │ Çözüldü — size-10 (40px) yapıldı                                      │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ Bookmark butonu küçük (36px)        │ Çözüldü — size-12 (48px) yapıldı                                      │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ Notification butonu küçük           │ Çözüldü — size-11 (44px) yapıldı                                      │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ active: state eksik                 │ Çözüldü — active:scale-95 / active:scale-[0.98] tüm butonlara eklendi │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ ThreadCard tıklanabilir değil       │ Çözüldü — Başlık <Link href="/thread/{id}"> oldu                      │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ Thread detay sayfası yok            │ Çözüldü — app/thread/[id]/page.tsx placeholder oluşturuldu            │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ background-image → next/image       │ Çözüldü — Hem thread-card.tsx hem before-after-slider.tsx             │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ Skeleton/loading yok                │ Çözüldü — loading.tsx + ThreadCardSkeleton + Skeleton bileşeni        │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ RightSidebar <form> eksik           │ Çözüldü — <form> ile sarıldı, onSubmit eklendi                        │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ Auth hata role="alert" eksik        │ Çözüldü — role="alert" ve role="status" eklendi                       │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ warning/destructive badge yok       │ Çözüldü — Badge'e her iki varyant da eklendi                          │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ Input aria-invalid desteği          │ Çözüldü — aria-invalid:border-rose-500/60 eklendi                     │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ BottomTabNav safe-area              │ Çözüldü — pb-[calc(0.75rem+env(safe-area-inset-bottom))]              │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ BeforeAfterSlider keşfedilebilirlik │ Çözüldü — animate-wiggle animasyonu eklendi                           │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ Auth sayfasına yönlendirme yok      │ Çözüldü — TopNavbar'da Sign in / Sign out butonları                   │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ Auth feature flag                   │ Eklendi — isAuthEnabled() + AUTH_ENABLED env                          │
+  ├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
+  │ Button active state                 │ Çözüldü — Base cva'ya active:scale-[0.98] eklendi                     │
+  └─────────────────────────────────────┴───────────────────────────────────────────────────────────────────────┘
+
+  Bu ciddi bir ilerleme. Ancak yeni güncelleme ile birlikte birkaç yeni sorun ortaya çıkmış ve bazı kalan eksiklikler var.
+
+  ---
+  Yeni Sorunlar
+
+  1. Renk Tutarsızlıkları (Kritik)
+
+  Tema değişimi sırasında bazı bileşenler eski renk paletinde kalmış:
+
+  AI Credits badge hala dark-mode cyan:
+  text-cyan-200 shadow-[0_0_24px_rgba(6,182,212,0.28)]
+  Açık arka plan üzerinde text-cyan-200 (çok soluk bir mavi) neredeyse okunamaz. → components/layout/top-navbar.tsx:51-53
+
+  ::selection hala cyan: globals.css:48 — Body amber iken selection cyan, tutarsız.
+
+  globals.css:4 hala --font-inter: Font Outfit'e geçmiş ama :root ve @theme içindeki --font-sans: var(--font-inter) güncellenmemiş. →
+  globals.css:4, 8
+
+  Loading sayfası bg-zinc-50 kullanıyor: Ana sayfa stone-50 kullanırken loading zinc-50 — subtil fakat tutarsız. → app/loading.tsx:11
+
+  Loading sayfası layout'u farklı: page.tsx grid max-w-[1600px] kullanırken, loading.tsx flex max-w-7xl kullanıyor. Skeleton ile gerçek
+  sayfa yapısal olarak uyuşmuyor. → loading.tsx:14 vs page.tsx:28
+
+  Skeleton renkleri zinc-200: Projenin geri kalanı stone-* kullanırken skeleton zinc-200 ve border-zinc-200. → thread-card-skeleton.tsx:5,
+   loading.tsx:19,27,35
+
+  Auth sayfasındaki disabled uyarı hala dark-mode renkleri:
+  bg-amber-500/10 text-amber-100
+  Light mode'da text-amber-100 görünmez (beyaza yakın bir renk açık arka plan üzerinde). → app/auth/page.tsx:41
+
+  2. Wiggle Animasyonu Bozuk
+
+  globals.css:15 — translateX() parametresiz. Bu geçersiz CSS, animasyon çalışmaz:
+  transform: translateX();  /* ← boş parametre */
+  translateX(0) olmalı. → app/globals.css:15
+
+  3. Mimari/Yapısal Sorunlar
+
+  proxy.ts hala düzeltilmemiş: Dosya adı proxy.ts ve fonksiyon adı proxy. Next.js middleware olarak çalışması için dosya middleware.ts
+  olmalı ve fonksiyon adı middleware olmalı. → proxy.ts:5
+
+  RightSidebar "use client" eklendi ama gereksiz olabilir: Sadece onSubmit placeholder alert'i için client component yapılmış. Server
+  Action kullanılsaydı server component kalabilirdi. → components/layout/right-sidebar.tsx:1
+
+  glass-label CSS sınıfı hala kullanılmıyor: Light mode'a uyarlanmış ama hiçbir bileşen referans vermiyor. Dead code. → globals.css:52-57
+
+  cyan-glow CSS sınıfı da kullanılmıyor: → globals.css:59-61
+
+  4. Erişilebilirlik Kalan Sorunları
+
+  Thread preview image'da generic alt text: "Thread preview image" her kart için aynı. Anlamlı değil, thread başlığını içermeli. →
+  components/feed/thread-card.tsx:65
+
+  Mobilde arama hala erişilemez: hidden md:flex ile gizleniyor, mobilde alternatif yok. → top-navbar.tsx:39
+
+  BottomTabNav'da aktif sekme göstergesi hala yok: Tüm butonlar aynı text-stone-500 rengiyle. aria-current="page" da yok. →
+  bottom-tab-nav.tsx
+
+  Mobilde sidebar içeriklerine erişim hala yok: Kategoriler ve AI Agent mobilde kayıp.
+
+  5. Tasarım Kararsızlığı: Dark ↔ Light
+
+  PRD ve architecture.md'de açıkça belirtilmiş:
+  "Strictly Dark Mode default to emphasize the gloss of automotive paint photos"
+
+  Ancak proje artık tam light mode. Bu bilinçli bir karar olabilir, ama:
+  - Araç detaylama fotoğrafları (siyah boya, gloss, swirl marks) koyu arka plan üzerinde çok daha etkileyici görünür
+  - Rakip detailing toplulukları genellikle koyu tema tercih eder
+  - BeforeAfterSlider görselleri light mode'da daha az dikkat çekici
+
+  ---
+  Yeni Geliştirme Önerileri
+
+  Yüksek Öncelik
+
+  #: 1
+  Öneri: AI Credits badge'ini light mode'a uyarla. text-cyan-200 → text-cyan-700, bg-cyan-500/12 → bg-cyan-50, shadow kaldır veya
+  hafiflet.
+    Ya da tutarlılık için amber tonlarına geçir.
+  Dosya: top-navbar.tsx:51-53
+  ────────────────────────────────────────
+  #: 2
+  Öneri: Wiggle animasyonunu düzelt. translateX() → translateX(0). Animasyon şu an çalışmıyor.
+  Dosya: globals.css:15
+  ────────────────────────────────────────
+  #: 3
+  Öneri: Auth disabled uyarısı renklerini düzelt. text-amber-100 → text-amber-800, bg-amber-500/10 → bg-amber-50 border border-amber-200.
+  Dosya: auth/page.tsx:41
+  ────────────────────────────────────────
+  #: 4
+  Öneri: proxy.ts'yi middleware.ts olarak yeniden adlandır ve proxy fonksiyonunu middleware olarak değiştir. Aksi halde Supabase session
+    yenileme çalışmaz.
+  Dosya: proxy.ts
+  ────────────────────────────────────────
+  #: 5
+  Öneri: Loading sayfası layout'unu page.tsx ile eşitle. Aynı grid yapısını ve stone-* renk paletini kullan. Kullanıcı skeleton → gerçek
+    içerik geçişinde layout kayması (CLS) yaşamasın.
+  Dosya: loading.tsx
+
+  Orta Öncelik
+
+  #: 6
+  Öneri: Tüm zinc-* artıklarını stone-* ile değiştir. Tutarlılık için global find-replace yap. loading.tsx, skeleton.tsx,
+    thread-card-skeleton.tsx, input.tsx, auth/page.tsx etkilenen dosyalar.
+  Dosya: Birden fazla
+  ────────────────────────────────────────
+  #: 7
+  Öneri: globals.css font variable'larını düzelt. :root ve @theme'deki --font-inter → --font-outfit olmalı.
+  Dosya: globals.css:4, 8
+  ────────────────────────────────────────
+  #: 8
+  Öneri: ::selection rengini amber'a geçir. rgba(6,182,212,0.2) (cyan) → rgba(245,158,11,0.25) (amber).
+  Dosya: globals.css:48
+  ────────────────────────────────────────
+  #: 9
+  Öneri: Thread image alt text'ini dinamik yap. alt="Thread preview image" → alt={`Preview for: ${thread.title}`}
+  Dosya: thread-card.tsx:65
+  ────────────────────────────────────────
+  #: 10
+  Öneri: Mobilde arama butonu ekle. TopNavbar'a md:hidden bir <Search> icon butonu koy, tıklayınca expandable search bar veya full-screen
+    overlay göster.
+  Dosya: top-navbar.tsx
+  ────────────────────────────────────────
+  #: 11
+  Öneri: Dark/light mode toggle düşün. Eğer dark mode tamamen bırakılmadıysa next-themes ile sistem tercihine göre otomatik geçiş ekle.
+    Detailing fotoğrafları için dark mode opsiyonu korunsun.
+  Dosya: layout.tsx
+  ────────────────────────────────────────
+  #: 12
+  Öneri: Kullanılmayan .glass-label ve .cyan-glow CSS sınıflarını kaldır veya kullanan bileşenlere entegre et.
+  Dosya: globals.css:52-61
+
+  Düşük Öncelik
+
+  #: 13
+  Öneri: Card bileşenindeki hover:-translate-y-0.5 her yerde istenmeyebilir. Sidebar kartları ve CreatePostTrigger gibi statik alanlarda
+    gereksiz "hover yüzme" efekti. Base Card'dan kaldırıp sadece ThreadCard'a eklemek daha uygun.
+  Dosya: card.tsx:10
+  ────────────────────────────────────────
+  #: 14
+  Öneri: BottomTabNav'a aktif sekme göstergesi ekle. Aktif tab'ı text-amber-600 + üst kenarda 2px amber border ile belirginleştir.
+    aria-current="page" ekle.
+  Dosya: bottom-tab-nav.tsx
+  ────────────────────────────────────────
+  #: 15
+  Öneri: RightSidebar'ı server component'a geri döndür. onSubmit alert yerine bir Server Action kullan, böylece client JS bundle küçülür.
+  Dosya: right-sidebar.tsx
+  ────────────────────────────────────────
+  #: 16
+  Öneri: Thread detay sayfasına layout oluştur. Şu an navbar ve sidebar yok, sadece izole bir placeholder. Ana layout ile tutarlı olmalı.
+  Dosya: app/thread/[id]/page.tsx
+
+  ---
+  Güncellenmiş Puanlama
+
+  ┌─────────────────────────────┬──────┬──────┬───────────────────────────────────────────────────────────────────┐
+  │          Kategori           │ Eski │ Yeni │                              Değişim                              │
+  ├─────────────────────────────┼──────┼──────┼───────────────────────────────────────────────────────────────────┤
+  │ Görsel Hiyerarşi & Layout   │  7   │  8   │                   +1 (h1, heading hiyerarşisi)                    │
+  ├─────────────────────────────┼──────┼──────┼───────────────────────────────────────────────────────────────────┤
+  │ Renk Sistemi & Kontrast     │  7   │  6   │            -1 (renk tutarsızlıkları, cyan kalıntıları)            │
+  ├─────────────────────────────┼──────┼──────┼───────────────────────────────────────────────────────────────────┤
+  │ Komponent Tasarımı          │  8   │  9   │         +1 (next/image, form, skeleton, badge varyantlar)         │
+  ├─────────────────────────────┼──────┼──────┼───────────────────────────────────────────────────────────────────┤
+  │ Etkileşim Tasarımı          │  6   │  8   │       +2 (touch targets, active states, mikro-animasyonlar)       │
+  ├─────────────────────────────┼──────┼──────┼───────────────────────────────────────────────────────────────────┤
+  │ Responsive & Mobil          │  7   │ 7.5  │            +0.5 (safe-area, ama mobil arama hala yok)             │
+  ├─────────────────────────────┼──────┼──────┼───────────────────────────────────────────────────────────────────┤
+  │ Navigasyon & Bilgi Mimarisi │  5   │  7   │            +2 (thread routing, sign in/out, auth flow)            │
+  ├─────────────────────────────┼──────┼──────┼───────────────────────────────────────────────────────────────────┤
+  │ Erişilebilirlik             │  6   │ 7.5  │     +1.5 (aria-label, role="alert", landmarks, aria-invalid)      │
+  ├─────────────────────────────┼──────┼──────┼───────────────────────────────────────────────────────────────────┤
+  │ İçerik Stratejisi           │  6   │ 6.5  │          +0.5 (auth mesajları, ama empty state hala yok)          │
+  ├─────────────────────────────┼──────┼──────┼───────────────────────────────────────────────────────────────────┤
+  │ Performans Algısı           │  4   │  7   │              +3 (skeleton, next/image, loading.tsx)               │
+  ├─────────────────────────────┼──────┼──────┼───────────────────────────────────────────────────────────────────┤
+  │ Duygusal Tasarım & Marka    │  8   │ 6.5  │ -1.5 (light mode detailing'e daha az uygun, tutarsız renk geçişi) │
+  └─────────────────────────────┴──────┴──────┴───────────────────────────────────────────────────────────────────┘
+
+  Toplam: 64 → 73/100 (+9 puan)
+
+  ---
+  Hızlı Kazanımlar (5 dk - 15 dk)
+
+  1. translateX() → translateX(0) — wiggle animasyonunu düzelt (2 dk)
+  2. AI Credits badge renklerini light mode'a uyarla (5 dk)
+  3. Auth disabled uyarısı text-amber-100 → text-amber-800 (2 dk)
+  4. --font-inter → --font-outfit globals.css'de (2 dk)
+  5. ::selection cyan → amber (2 dk)
+  6. Loading sayfasındaki zinc-* → stone-* (5 dk)
+
+  Bu 6 quick fix'i yapmak yaklaşık 18 dakika sürer ve renk tutarsızlığı puanını 6 → 8'e çıkarır, toplam puanı ~75-77'ye taşır.
