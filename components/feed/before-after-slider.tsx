@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useState } from "react";
 import { ChevronsLeftRight } from "lucide-react";
 
@@ -58,7 +59,7 @@ export function BeforeAfterSlider({
   };
 
   return (
-    <div className="relative mt-4 rounded-xl border border-zinc-800/80 bg-zinc-900 p-2">
+    <div className="relative mt-4 rounded-xl border border-zinc-200 bg-zinc-50 p-2">
       <div
         ref={sliderRef}
         className="relative h-56 overflow-hidden rounded-lg touch-none select-none sm:h-64"
@@ -67,18 +68,26 @@ export function BeforeAfterSlider({
         onPointerCancel={stopDragging}
         onPointerLeave={stopDragging}
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${beforeImageUrl})` }}
-        />
+        <div className="absolute inset-0">
+          <Image
+            src={beforeImageUrl}
+            alt="Before condition"
+            fill
+            className="object-cover"
+          />
+        </div>
         <div
           className="absolute inset-0"
           style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
         >
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${afterImageUrl})` }}
-          />
+          <div className="absolute inset-0">
+            <Image
+              src={afterImageUrl}
+              alt="After condition"
+              fill
+              className="object-cover"
+            />
+          </div>
         </div>
 
         <div className="absolute top-3 left-3 rounded-full border border-white/25 bg-white/10 px-2.5 py-1 text-[10px] font-semibold tracking-[0.2em] text-white backdrop-blur-md">
@@ -98,7 +107,7 @@ export function BeforeAfterSlider({
           aria-label="Adjust before and after comparison"
           onPointerDown={handlePointerDown}
           className={cn(
-            "absolute top-1/2 z-30 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-cyan-300/70 bg-zinc-950/90 text-cyan-200 shadow-[0_0_22px_rgba(6,182,212,0.45)] transition",
+            "animate-wiggle absolute top-1/2 z-30 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-cyan-400 bg-white text-cyan-600 shadow-[0_0_22px_rgba(6,182,212,0.25)] transition hover:scale-105 active:scale-95",
             isDragging && "scale-105",
           )}
           style={{ left: `${position}%` }}

@@ -30,7 +30,7 @@ export const threads: Thread[] = [
     snippet:
       "Tested F6 on a black Civic panel with heavy swirl marks. The cut level surprised me, but pad choice changed the finish quality dramatically.",
     tags: [
-      { label: "Koch Chemie", variant: "cyan" },
+      { label: "Koch Chemie", variant: "amber" },
       { label: "Paint Correction", variant: "default" },
     ],
     votes: 128,
@@ -57,7 +57,7 @@ export const threads: Thread[] = [
     snippet:
       "If your wash bay space is limited, this rinse-first routine cuts water usage and keeps marring risk low. Included: dilution chart and mitt rotation timing.",
     tags: [
-      { label: "Washing", variant: "cyan" },
+      { label: "Washing", variant: "amber" },
       { label: "Beginner Friendly", variant: "default" },
     ],
     votes: 96,
@@ -78,7 +78,7 @@ export const threads: Thread[] = [
     snippet:
       "I documented contact angle, gloss meter readings, and maintenance effort over 8 weeks. Data suggests the second layer helps mostly with long-term chemical resistance.",
     tags: [
-      { label: "Ceramic Coatings", variant: "cyan" },
+      { label: "Ceramic Coatings", variant: "amber" },
       { label: "Field Test", variant: "default" },
     ],
     votes: 74,

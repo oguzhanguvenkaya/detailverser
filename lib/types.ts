@@ -1,6 +1,6 @@
 export type ThreadTag = {
   label: string;
-  variant?: "default" | "cyan";
+  variant?: "default" | "amber";
 };
 
 export type ThreadAuthor = {

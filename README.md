@@ -1,5 +1,18 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Auth Feature Flag
+
+Authentication integration is available but disabled by default for easier testing.
+
+- `AUTH_ENABLED=false`: auth UI is visible but disabled, auth actions are bypassed.
+- `AUTH_ENABLED=true`: auth flows (email/password + Google OAuth) are active.
+
+Set this in your `.env.local`:
+
+```bash
+AUTH_ENABLED=false
+```
+
 ## Getting Started
 
 First, run the development server:

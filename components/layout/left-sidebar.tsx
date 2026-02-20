@@ -12,45 +12,51 @@ const iconMap = {
 
 export function LeftSidebar() {
   return (
-    <aside className="sticky top-20 z-40 hidden h-[calc(100vh-6rem)] overflow-y-auto lg:block">
-      <div className="rounded-2xl border border-zinc-800 bg-zinc-900/70 p-4 shadow-[0_30px_55px_-36px_rgba(0,0,0,0.85)]">
-        <p className="mb-3 text-xs font-semibold tracking-[0.18em] text-zinc-500 uppercase">
+    <aside
+      aria-label="Main navigation"
+      className="sticky top-20 z-40 hidden h-[calc(100vh-6rem)] overflow-y-auto lg:block"
+    >
+      <div className="rounded-2xl border border-stone-200/50 bg-white/50 p-4 shadow-sm backdrop-blur-xl transition-all duration-300 hover:shadow-md">
+        <h2 className="mb-3 text-xs font-semibold tracking-[0.18em] text-stone-500 uppercase">
           Navigation
-        </p>
+        </h2>
         <nav className="space-y-1.5">
           {navItems.map((item) => {
             const Icon = iconMap[item.icon];
             return (
-              <a
+              <button
                 key={item.label}
-                href={item.href}
+                type="button"
                 className={cn(
-                  "flex items-center gap-2 rounded-xl border px-3 py-2 text-sm font-medium transition",
+                  "group flex w-full items-center gap-2 rounded-xl border px-3 py-2 text-sm font-medium transition-all active:scale-[0.98]",
                   item.active
-                    ? "border-cyan-500/45 bg-cyan-500/12 text-cyan-200"
-                    : "border-zinc-800 bg-zinc-900 text-zinc-300 hover:border-zinc-700 hover:text-zinc-100",
+                    ? "border-amber-200 bg-gradient-to-r from-amber-50 to-white text-amber-800 shadow-sm"
+                    : "border-transparent text-stone-600 hover:bg-white hover:text-stone-900 hover:shadow-sm hover:border-stone-100",
                 )}
               >
-                <Icon className="size-4" />
+                <Icon className={cn(
+                  "size-4 transition-transform duration-300",
+                  !item.active && "group-hover:scale-110 group-hover:text-amber-600"
+                )} />
                 <span>{item.label}</span>
-              </a>
+              </button>
             );
           })}
         </nav>
 
         <div className="mt-7">
-          <p className="mb-3 text-xs font-semibold tracking-[0.18em] text-zinc-500 uppercase">
+          <h2 className="mb-3 text-xs font-semibold tracking-[0.18em] text-stone-500 uppercase">
             Categories
-          </p>
+          </h2>
           <div className="flex flex-wrap gap-2">
             {categoryLinks.map((category) => (
-              <a
+              <button
                 key={category.label}
-                href={category.href}
-                className="rounded-full border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs font-medium text-zinc-300 transition hover:border-cyan-500/60 hover:text-cyan-200"
+                type="button"
+                className="rounded-full border border-stone-200 bg-stone-50/50 px-3 py-1.5 text-xs font-medium text-stone-600 transition-all hover:-translate-y-0.5 hover:border-amber-200 hover:bg-gradient-to-r hover:from-amber-50 hover:to-white hover:text-amber-700 hover:shadow-sm active:scale-95"
               >
                 {category.label}
-              </a>
+              </button>
             ))}
           </div>
         </div>

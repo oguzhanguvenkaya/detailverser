@@ -1,28 +1,48 @@
+import Link from "next/link";
+import type { User } from "@supabase/supabase-js";
 import { Bell, Search, Sparkles } from "lucide-react";
 
+import { signOutAction } from "@/app/auth/actions";
 import { aiCredits } from "@/lib/mock-data";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-export function TopNavbar() {
+type TopNavbarProps = {
+  user: User | null;
+  authEnabled: boolean;
+};
+
+function getInitials(email?: string | null) {
+  if (!email) {
+    return "DV";
+  }
+
+  return email.slice(0, 2).toUpperCase();
+}
+
+export function TopNavbar({ user, authEnabled }: TopNavbarProps) {
+  const avatarUrl =
+    typeof user?.user_metadata?.avatar_url === "string" ? user.user_metadata.avatar_url : undefined;
+
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-800/95 bg-zinc-950/90 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-stone-200/50 bg-white/60 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-[1600px] items-center gap-3 px-4 lg:px-6">
-        <a
-          href="#"
-          className="flex shrink-0 items-center gap-2 text-sm font-semibold text-zinc-100 transition-colors hover:text-cyan-300"
+        <Link
+          href="/"
+          className="group flex shrink-0 items-center gap-2 text-sm font-semibold text-stone-900 transition-all hover:text-amber-700 hover:-translate-y-0.5 active:scale-95"
         >
-          <Sparkles className="size-4 text-cyan-400" />
+          <Sparkles className="size-4 text-amber-500 transition-transform duration-300 group-hover:scale-125 group-hover:text-amber-600" />
           <span className="text-base tracking-wide">DetailVerse</span>
-        </a>
+        </Link>
 
         <div className="hidden flex-1 px-4 md:flex">
           <label className="relative mx-auto w-full max-w-2xl">
-            <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-zinc-500" />
+            <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-stone-400" />
             <Input
               aria-label="Global search"
               placeholder="Search products, guides, or ask AI..."
-              className="h-10 rounded-full border-zinc-800 bg-zinc-900/70 pl-9"
+              className="h-10 rounded-full border-stone-200 bg-stone-50/50 pl-9 transition-all focus-visible:bg-white focus-visible:shadow-sm shadow-inner"
             />
           </label>
         </div>
@@ -31,20 +51,37 @@ export function TopNavbar() {
           <div className="rounded-full border border-cyan-500/40 bg-cyan-500/12 px-3 py-1 text-xs font-semibold text-cyan-200 shadow-[0_0_24px_rgba(6,182,212,0.28)] sm:text-sm">
             AI Credits: {aiCredits} \ud83e\ude99
           </div>
-          <button
-            type="button"
-            aria-label="Notifications"
-            className="inline-flex size-9 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 text-zinc-300 transition hover:border-cyan-500/50 hover:text-cyan-200"
-          >
-            <Bell className="size-4" />
-          </button>
-          <Avatar className="size-9">
-            <AvatarImage
-              src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?auto=format&fit=crop&w=160&q=80"
-              alt="User avatar"
-            />
-            <AvatarFallback>DV</AvatarFallback>
-          </Avatar>
+
+          {!authEnabled ? (
+            <Button variant="outline" size="sm" className="rounded-full" disabled>
+              Auth pasif (test modu)
+            </Button>
+          ) : user ? (
+            <>
+              <button
+                type="button"
+                aria-label="Notifications"
+                className="group inline-flex size-11 items-center justify-center rounded-full border border-stone-200 bg-white/50 text-stone-600 transition-all hover:border-amber-300 hover:bg-amber-50/50 hover:text-amber-700 hover:shadow-sm active:scale-95"
+              >
+                <Bell className="size-4 transition-transform duration-300 origin-top-[10%] group-hover:rotate-12" />
+              </button>
+
+              <Avatar className="size-11 cursor-pointer transition active:scale-95">
+                {avatarUrl ? <AvatarImage src={avatarUrl} alt="User avatar" /> : null}
+                <AvatarFallback>{getInitials(user.email)}</AvatarFallback>
+              </Avatar>
+
+              <form action={signOutAction} className="hidden sm:block">
+                <Button type="submit" variant="outline" size="sm" className="rounded-full">
+                  Sign out
+                </Button>
+              </form>
+            </>
+          ) : (
+            <Button asChild variant="outline" size="sm" className="rounded-full">
+              <Link href="/auth">Sign in</Link>
+            </Button>
+          )}
         </div>
       </div>
     </header>

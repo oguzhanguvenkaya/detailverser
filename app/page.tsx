@@ -5,17 +5,31 @@ import { LeftSidebar } from "@/components/layout/left-sidebar";
 import { RightSidebar } from "@/components/layout/right-sidebar";
 import { TopNavbar } from "@/components/layout/top-navbar";
 import { BottomTabNav } from "@/components/mobile/bottom-tab-nav";
+import { isAuthEnabled } from "@/lib/features/auth";
 import { threads } from "@/lib/mock-data";
+import { createClient } from "@/lib/supabase/server";
 
-export default function Home() {
+export default async function Home() {
+  const authEnabled = isAuthEnabled();
+  let user = null;
+
+  if (authEnabled) {
+    const supabase = await createClient();
+    const {
+      data: { user: authUser },
+    } = await supabase.auth.getUser();
+    user = authUser;
+  }
+
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
-      <TopNavbar />
+    <div className="min-h-screen">
+      <TopNavbar user={user} authEnabled={authEnabled} />
 
       <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-6 px-4 pt-5 pb-24 lg:grid-cols-[250px_minmax(0,1fr)_320px] lg:px-6 lg:pb-10">
         <LeftSidebar />
 
         <main className="relative z-10 flex min-w-0 flex-col gap-4 pb-24 lg:pb-2">
+          <h1 className="sr-only">Community Feed</h1>
           <CreatePostTrigger />
 
           {threads.map((thread, index) => (
