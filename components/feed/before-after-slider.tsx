@@ -59,7 +59,7 @@ export function BeforeAfterSlider({
   };
 
   return (
-    <div className="relative mt-4 rounded-xl border border-stone-200 bg-stone-50 p-2">
+    <div className="relative mt-4 rounded-xl border border-honey-border bg-honey-muted/50 p-2">
       <div
         ref={sliderRef}
         className="relative h-56 overflow-hidden rounded-lg touch-none select-none sm:h-64"
@@ -98,7 +98,7 @@ export function BeforeAfterSlider({
         </div>
 
         <div
-          className="pointer-events-none absolute inset-y-0 z-20 w-px bg-amber-400/85"
+          className="pointer-events-none absolute inset-y-0 z-20 w-px bg-honey-primary/85"
           style={{ left: `${position}%` }}
         />
 
@@ -107,7 +107,7 @@ export function BeforeAfterSlider({
           aria-label="Adjust before and after comparison"
           onPointerDown={handlePointerDown}
           className={cn(
-            "animate-wiggle absolute top-1/2 z-30 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-amber-400 bg-white text-amber-600 shadow-[0_0_22px_rgba(245,158,11,0.25)] transition hover:scale-105 active:scale-95",
+            "animate-wiggle absolute top-1/2 z-30 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-honey-primary bg-honey-card text-honey-primary-text shadow-[0_0_22px_rgba(247,206,134,0.35)] transition hover:scale-105 active:scale-95",
             isDragging && "scale-105",
           )}
           style={{ left: `${position}%` }}

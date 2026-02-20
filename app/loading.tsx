@@ -17,7 +17,7 @@ export default function Loading() {
                 <main className="relative z-10 flex min-w-0 flex-col gap-4 pb-24 lg:pb-2">
                     <h1 className="sr-only">Community Feed</h1>
 
-                    <Card className="border-stone-200 bg-white shadow-sm">
+                    <Card className="border-honey-border bg-honey-card shadow-sm">
                         <CardContent className="flex items-center gap-3 p-4">
                             <Skeleton className="size-10 rounded-full" />
                             <Skeleton className="h-11 flex-1 rounded-full" />

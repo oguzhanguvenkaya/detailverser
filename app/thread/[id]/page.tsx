@@ -25,18 +25,18 @@ export default async function ThreadPage({ params }: PageProps) {
                 <main className="relative z-10 flex min-w-0 flex-col gap-4 pb-24 lg:pb-2">
                     <Link
                         href="/"
-                        className="group inline-flex w-fit items-center gap-2 text-sm font-medium text-stone-500 hover:text-amber-600 transition-colors"
+                        className="group inline-flex w-fit items-center gap-2 text-sm font-medium text-honey-text hover:text-honey-primary-text transition-colors"
                     >
                         <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
                         Back to Feed
                     </Link>
 
-                    <div className="rounded-2xl border border-stone-200/50 bg-white/70 p-6 shadow-sm backdrop-blur-xl md:p-10">
-                        <div className="inline-flex rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800 mb-4">
+                    <div className="rounded-2xl border border-honey-border/50 bg-honey-card p-6 shadow-sm backdrop-blur-xl md:p-10">
+                        <div className="inline-flex rounded-full bg-honey-primary/20 px-3 py-1 text-xs font-semibold text-honey-primary-text mb-4">
                             Detailed Thread
                         </div>
-                        <h1 className="text-2xl font-bold text-stone-900 mb-3 md:text-3xl">Viewing Thread: {resolvedParams.id}</h1>
-                        <p className="text-stone-600 leading-relaxed">
+                        <h1 className="text-2xl font-bold text-honey-card-text mb-3 md:text-3xl">Viewing Thread: {resolvedParams.id}</h1>
+                        <p className="text-honey-text leading-relaxed">
                             This is a functional route placeholder to demonstrate that navigation is working. Real thread content, comments, and media would be loaded here.
                         </p>
                     </div>

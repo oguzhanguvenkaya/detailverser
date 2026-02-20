@@ -26,23 +26,23 @@ export function TopNavbar({ user, authEnabled }: TopNavbarProps) {
     typeof user?.user_metadata?.avatar_url === "string" ? user.user_metadata.avatar_url : undefined;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-stone-200/50 bg-white/60 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-honey-border/50 bg-honey-bg/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-[1600px] items-center gap-3 px-4 lg:px-6">
         <Link
           href="/"
-          className="group flex shrink-0 items-center gap-2 text-sm font-semibold text-stone-900 transition-all hover:text-amber-700 hover:-translate-y-0.5 active:scale-95"
+          className="group flex shrink-0 items-center gap-2 text-sm font-semibold text-honey-card-text transition-all hover:text-honey-primary-text hover:-translate-y-0.5 active:scale-95"
         >
-          <Sparkles className="size-4 text-amber-500 transition-transform duration-300 group-hover:scale-125 group-hover:text-amber-600" />
+          <Sparkles className="size-4 text-honey-primary transition-transform duration-300 group-hover:scale-125" />
           <span className="text-base tracking-wide">DetailVerse</span>
         </Link>
 
         <div className="hidden flex-1 px-4 md:flex">
           <label className="relative mx-auto w-full max-w-2xl">
-            <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-stone-400" />
+            <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-honey-text/50" />
             <Input
               aria-label="Global search"
               placeholder="Search products, guides, or ask AI..."
-              className="h-10 rounded-full border-stone-200 bg-stone-50/50 pl-9 transition-all focus-visible:bg-white focus-visible:shadow-sm shadow-inner"
+              className="h-10 rounded-full border-honey-border bg-honey-muted/50 pl-9 transition-all focus-visible:bg-honey-card focus-visible:shadow-sm shadow-inner"
             />
           </label>
         </div>
@@ -51,12 +51,12 @@ export function TopNavbar({ user, authEnabled }: TopNavbarProps) {
           <button
             type="button"
             aria-label="Search"
-            className="group inline-flex size-10 items-center justify-center rounded-full border border-stone-200 bg-white/50 text-stone-600 transition-all hover:border-amber-300 hover:bg-amber-50/50 hover:text-amber-700 active:scale-95 md:hidden"
+            className="group inline-flex size-10 items-center justify-center rounded-full border border-honey-border bg-honey-card/50 text-honey-text transition-all hover:border-honey-primary hover:bg-honey-primary/10 hover:text-honey-primary-text active:scale-95 md:hidden"
           >
             <Search className="size-4" />
           </button>
-          <div className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700 sm:text-sm">
-            AI Credits: {aiCredits} \ud83e\ude99
+          <div className="rounded-full border border-honey-primary/50 bg-honey-primary/20 px-3 py-1 text-xs font-semibold text-honey-primary-text sm:text-sm">
+            AI Credits: {aiCredits} 🪙
           </div>
 
           {!authEnabled ? (
@@ -68,7 +68,7 @@ export function TopNavbar({ user, authEnabled }: TopNavbarProps) {
               <button
                 type="button"
                 aria-label="Notifications"
-                className="group inline-flex size-11 items-center justify-center rounded-full border border-stone-200 bg-white/50 text-stone-600 transition-all hover:border-amber-300 hover:bg-amber-50/50 hover:text-amber-700 hover:shadow-sm active:scale-95"
+                className="group inline-flex size-11 items-center justify-center rounded-full border border-honey-border bg-honey-card/50 text-honey-text transition-all hover:border-honey-primary hover:bg-honey-primary/10 hover:text-honey-primary-text hover:shadow-sm active:scale-95"
               >
                 <Bell className="size-4 transition-transform duration-300 origin-top-[10%] group-hover:rotate-12" />
               </button>

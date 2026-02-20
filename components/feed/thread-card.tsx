@@ -24,19 +24,19 @@ export function ThreadCard({ thread, children }: ThreadCardProps) {
           </Avatar>
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="truncate text-sm font-semibold text-stone-900">{thread.author.name}</span>
+              <span className="truncate text-sm font-semibold text-honey-card-text">{thread.author.name}</span>
               <Badge variant="amber">{thread.author.role}</Badge>
             </div>
-            <p className="text-xs text-stone-500">{thread.timestamp}</p>
+            <p className="text-xs text-honey-text/60">{thread.timestamp}</p>
           </div>
         </header>
 
         <div className="space-y-2">
           <Link href={`/thread/${thread.id}`} className="hover:underline">
-            <h2 className="text-xl leading-tight font-bold text-stone-900 sm:text-2xl transition-colors group-hover:text-amber-600">{thread.title}</h2>
+            <h2 className="text-xl leading-tight font-bold text-honey-card-text sm:text-2xl transition-colors group-hover:text-honey-primary-text">{thread.title}</h2>
           </Link>
           <p
-            className="text-sm leading-relaxed text-stone-600"
+            className="text-sm leading-relaxed text-honey-text/80"
             style={{
               display: "-webkit-box",
               WebkitLineClamp: 2,
@@ -59,7 +59,7 @@ export function ThreadCard({ thread, children }: ThreadCardProps) {
         {children}
 
         {!children && thread.previewImageUrl ? (
-          <div className="relative h-48 overflow-hidden rounded-xl border border-stone-200 bg-stone-100">
+          <div className="relative h-48 overflow-hidden rounded-xl border border-honey-border bg-honey-muted">
             <Image
               src={thread.previewImageUrl}
               alt={`Preview for: ${thread.title}`}
@@ -71,19 +71,19 @@ export function ThreadCard({ thread, children }: ThreadCardProps) {
 
         <footer className="flex items-center justify-between gap-2 pt-1">
           <div className="flex items-center gap-2">
-            <div className="inline-flex items-center rounded-full border border-stone-200 bg-stone-50/50 px-1 py-1 shadow-sm">
+            <div className="inline-flex items-center rounded-full border border-honey-border bg-honey-muted/50 px-1 py-1 shadow-sm">
               <button
                 type="button"
                 aria-label="Upvote"
-                className="group inline-flex size-10 items-center justify-center rounded-full text-stone-500 transition-colors hover:bg-white hover:text-amber-500 hover:shadow-sm active:scale-95"
+                className="group inline-flex size-10 items-center justify-center rounded-full text-honey-text/60 transition-colors hover:bg-honey-card hover:text-honey-primary-text hover:shadow-sm active:scale-95"
               >
                 <ChevronUp className="size-5 transition-transform duration-300 group-hover:-translate-y-0.5" />
               </button>
-              <span className="px-1.5 text-sm font-semibold text-stone-900">{thread.votes}</span>
+              <span className="px-1.5 text-sm font-semibold text-honey-card-text">{thread.votes}</span>
               <button
                 type="button"
                 aria-label="Downvote"
-                className="group inline-flex size-10 items-center justify-center rounded-full text-stone-500 transition-colors hover:bg-white hover:text-amber-500 hover:shadow-sm active:scale-95"
+                className="group inline-flex size-10 items-center justify-center rounded-full text-honey-text/60 transition-colors hover:bg-honey-card hover:text-honey-primary-text hover:shadow-sm active:scale-95"
               >
                 <ChevronDown className="size-5 transition-transform duration-300 group-hover:translate-y-0.5" />
               </button>
@@ -91,9 +91,9 @@ export function ThreadCard({ thread, children }: ThreadCardProps) {
 
             <button
               type="button"
-              className="group inline-flex h-12 items-center gap-2 rounded-full border border-stone-200 bg-stone-50/50 shadow-sm px-4 text-sm font-medium text-stone-600 transition-all hover:bg-white hover:border-stone-300 hover:text-amber-600 active:scale-95"
+              className="group inline-flex h-12 items-center gap-2 rounded-full border border-honey-border bg-honey-muted/50 shadow-sm px-4 text-sm font-medium text-honey-text transition-all hover:bg-honey-card hover:border-honey-primary/40 hover:text-honey-primary-text active:scale-95"
             >
-              <MessageSquare className="size-4.5 transition-transform duration-300 group-hover:scale-110 group-hover:text-amber-500" />
+              <MessageSquare className="size-4.5 transition-transform duration-300 group-hover:scale-110" />
               {thread.comments}
             </button>
           </div>
@@ -101,7 +101,7 @@ export function ThreadCard({ thread, children }: ThreadCardProps) {
           <button
             type="button"
             aria-label="Save thread"
-            className="group inline-flex size-12 items-center justify-center rounded-full border border-stone-200 bg-stone-50/50 text-stone-500 shadow-sm transition-all hover:bg-white hover:border-amber-200 hover:text-amber-500 active:scale-95"
+            className="group inline-flex size-12 items-center justify-center rounded-full border border-honey-border bg-honey-muted/50 text-honey-text/60 shadow-sm transition-all hover:bg-honey-card hover:border-honey-primary/40 hover:text-honey-primary-text active:scale-95"
           >
             <Bookmark className="size-5 transition-transform duration-300 group-hover:scale-110" />
           </button>

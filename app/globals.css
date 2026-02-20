@@ -2,10 +2,41 @@
 
 :root {
   --font-sans: var(--font-outfit);
+  --honey-bg: #fffbef;
+  --honey-text: #5f471d;
+  --honey-muted-bg: #f7eede;
+  --honey-muted-text: #5f471d;
+  --honey-card-bg: #fefbf0;
+  --honey-card-text: #0f1419;
+  --honey-primary-bg: #f7ce86;
+  --honey-primary-text: #5b4824;
+  --honey-secondary-bg: #5b4824;
+  --honey-secondary-text: #f9dea9;
+  --honey-accent-bg: #e6ecd3;
+  --honey-accent-text: #636e59;
+  --honey-border: #e5e0d2;
+  --honey-focus: #5b4824;
+  --honey-input: #e5e0d2;
 }
 
 @theme inline {
   --font-sans: var(--font-outfit);
+  --color-honey-bg: #fffbef;
+  --color-honey-text: #5f471d;
+  --color-honey-muted: #f7eede;
+  --color-honey-card: #fefbf0;
+  --color-honey-card-text: #0f1419;
+  --color-honey-primary: #f7ce86;
+  --color-honey-primary-text: #5b4824;
+  --color-honey-secondary: #5b4824;
+  --color-honey-secondary-text: #f9dea9;
+  --color-honey-accent: #e6ecd3;
+  --color-honey-accent-text: #636e59;
+  --color-honey-border: #e5e0d2;
+  --color-honey-focus: #5b4824;
+  --color-honey-input: #e5e0d2;
+  --color-honey-destructive: #cb5150;
+
   --animate-wiggle: wiggle 0.6s ease-in-out 1s;
 
   @keyframes wiggle {
@@ -26,25 +57,25 @@
 }
 
 * {
-  border-color: theme(colors.stone.200);
+  border-color: var(--honey-border);
 }
 
 html,
 body {
   min-height: 100%;
-  background: theme(colors.stone.50);
-  color: theme(colors.stone.900);
+  background: var(--honey-bg);
+  color: var(--honey-text);
 }
 
 body {
   font-family: var(--font-outfit), "Outfit", "Segoe UI", sans-serif;
   background-image:
-    radial-gradient(circle at 12% 0%, rgba(245, 158, 11, 0.08), transparent 32%),
-    radial-gradient(circle at 88% 100%, rgba(245, 158, 11, 0.05), transparent 28%);
+    radial-gradient(circle at 12% 0%, rgba(247, 206, 134, 0.12), transparent 32%),
+    radial-gradient(circle at 88% 100%, rgba(247, 206, 134, 0.07), transparent 28%);
   background-attachment: fixed;
 }
 
 ::selection {
-  background: rgba(245, 158, 11, 0.25);
-  color: theme(colors.stone.950);
+  background: rgba(247, 206, 134, 0.35);
+  color: var(--honey-card-text);
 }

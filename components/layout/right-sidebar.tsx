@@ -15,10 +15,10 @@ export function RightSidebar() {
       aria-label="AI Agent and trending products"
       className="sticky top-20 z-40 hidden h-[calc(100vh-6rem)] overflow-y-auto space-y-4 lg:block"
     >
-      <Card className="border-amber-200 bg-white/90 shadow-sm backdrop-blur-md">
+      <Card className="border-honey-primary/30 bg-honey-card shadow-sm backdrop-blur-md">
         <CardContent className="space-y-4 p-4">
           <div className="space-y-1">
-            <h2 className="text-sm font-semibold tracking-wide text-stone-900 uppercase">
+            <h2 className="text-sm font-semibold tracking-wide text-honey-card-text uppercase">
               Detail Agent AI
             </h2>
             <CardDescription>
@@ -35,7 +35,7 @@ export function RightSidebar() {
             <Input
               aria-label="Ask Detail Agent"
               placeholder="How do I remove water spots safely?"
-              className="h-10 border-amber-200 bg-amber-50/30"
+              className="h-10 border-honey-primary/30 bg-honey-primary/10"
             />
             <Button type="submit" className="h-10 w-full justify-center rounded-lg active:scale-[0.98]">
               <Sparkles className="size-4" />
@@ -48,7 +48,7 @@ export function RightSidebar() {
       <Card>
         <CardContent className="space-y-4 p-4">
           <div className="space-y-1">
-            <h2 className="text-sm font-semibold tracking-wide text-stone-900 uppercase">
+            <h2 className="text-sm font-semibold tracking-wide text-honey-card-text uppercase">
               Trending Gear
             </h2>
             <CardDescription>Price alerts from products watched by the community.</CardDescription>
@@ -58,12 +58,12 @@ export function RightSidebar() {
 
           <ul className="space-y-3">
             {trendingProducts.map((product) => (
-              <li key={product.id} className="rounded-xl border border-stone-200 bg-white p-3">
-                <p className="text-sm font-medium text-stone-900">{product.name}</p>
+              <li key={product.id} className="rounded-xl border border-honey-border bg-honey-card p-3">
+                <p className="text-sm font-medium text-honey-card-text">{product.name}</p>
                 <div className="mt-2 flex items-center justify-between">
                   <div className="text-sm">
-                    <span className="mr-2 text-stone-500 line-through">{product.oldPrice}</span>
-                    <span className="font-semibold text-emerald-400">{product.newPrice}</span>
+                    <span className="mr-2 text-honey-text/50 line-through">{product.oldPrice}</span>
+                    <span className="font-semibold text-emerald-600">{product.newPrice}</span>
                   </div>
                   <Badge variant="success">{product.dropLabel}</Badge>
                 </div>

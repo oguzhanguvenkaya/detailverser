@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export function CreatePostTrigger() {
   return (
-    <Card className="border-stone-200 bg-white">
+    <Card className="border-honey-border bg-honey-card">
       <CardContent className="flex items-center gap-3 p-4">
         <Avatar>
           <AvatarImage
@@ -16,8 +16,8 @@ export function CreatePostTrigger() {
           <AvatarFallback>DV</AvatarFallback>
         </Avatar>
         <Button
-          variant="secondary"
-          className="h-11 flex-1 justify-start rounded-full border border-stone-200 bg-stone-50 px-4 text-stone-500 transition hover:bg-stone-100 hover:text-stone-900 active:scale-[0.98]"
+          variant="outline"
+          className="h-11 flex-1 justify-start rounded-full border-honey-border bg-honey-muted/50 px-4 text-honey-text/60 transition hover:bg-honey-card hover:text-honey-card-text active:scale-[0.98]"
         >
           <PenSquare className="size-4" />
           Create new post

@@ -4,23 +4,17 @@
 DetailVerse is a social community platform for auto detailing enthusiasts. It features a feed of posts with before/after comparisons, product reviews, guides, and AI-powered detailing advice. Built with Next.js, React, TypeScript, and Tailwind CSS.
 
 ## Recent Changes
-- Light mode theme consistency: replaced all zinc-* with stone-*, all cyan with amber across every component
-- Fixed wiggle animation (translateX() → translateX(0))
-- Fixed font variable (--font-inter → --font-outfit)
-- Fixed ::selection color to match amber theme
-- Removed unused CSS classes (.glass-label, .cyan-glow)
-- Renamed proxy.ts → middleware.ts with correct export name
-- Added mobile search button in TopNavbar
-- Added active tab indicator with aria-current in BottomTabNav
-- Thread detail page now uses full layout (navbar + sidebars)
-- Loading skeleton matches page.tsx grid structure to prevent CLS
-- Dynamic alt text for thread preview images
-- Auth page fully converted to stone/amber palette
+- Switched to Replit Honey theme: custom CSS variables for all colors (--honey-bg, --honey-text, --honey-primary, etc.)
+- Background: #fffbef (warm cream), Text: #5f471d (dark brown), Primary: #f7ce86 (golden), Secondary: #5b4824 (deep brown)
+- Cards: #fefbf0, Borders: #e5e0d2, Muted: #f7eede, Focus: #5b4824
+- All components use honey-* Tailwind theme colors via @theme inline
+- Fixed wiggle animation, font variable, middleware naming
+- Added mobile search, active tab indicators, full thread detail layout
 - Downgraded from Next.js 16 to Next.js 15 for Replit environment compatibility
 - Configured `allowedDevOrigins` in `next.config.ts` for Replit proxy support
 
 ## User Preferences
-- Light mode theme with amber/orange accent colors and stone neutrals
+- Replit Honey theme with warm cream/golden color palette
 - Outfit font family
 - Accessibility-focused: proper aria labels, touch targets, semantic HTML
 

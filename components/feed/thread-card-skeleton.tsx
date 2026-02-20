@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export function ThreadCardSkeleton() {
     return (
-        <Card className="border-stone-200 bg-white shadow-sm">
+        <Card className="border-honey-border bg-honey-card shadow-sm">
             <CardContent className="space-y-4 p-5">
                 <div className="flex items-center gap-3">
                     <Skeleton className="size-10 shrink-0 rounded-full" />
