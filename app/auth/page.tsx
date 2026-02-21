@@ -30,7 +30,7 @@ export default async function AuthPage({
         <div className="flex items-center justify-between">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 rounded-full border border-honey-border bg-honey-card px-3 py-1.5 text-sm text-honey-text transition hover:border-honey-primary hover:bg-honey-primary/10 hover:text-honey-primary-text active:scale-95"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1.5 text-sm text-slate-600 transition hover:border-cyan-300 hover:bg-cyan-50/50 hover:text-cyan-600 active:scale-95"
           >
             <ArrowLeft className="size-4" />
             Back to feed
@@ -38,13 +38,13 @@ export default async function AuthPage({
         </div>
 
         {!authEnabled ? (
-          <div className="rounded-xl border border-honey-primary/40 bg-honey-primary/15 px-4 py-3 text-sm text-honey-primary-text">
-            Auth geçici olarak kapalı; entegrasyon korunuyor. Test sürecinde login akışları pasif.
+          <div className="rounded-xl border border-cyan-200/50 bg-cyan-50 px-4 py-3 text-sm text-cyan-700">
+            Auth is temporarily disabled. Integration preserved for test mode.
           </div>
         ) : null}
 
         <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-          <Card className="border-honey-border bg-honey-card shadow-sm">
+          <Card>
             <CardHeader>
               <CardTitle className="text-2xl">Welcome to DetailVerse</CardTitle>
               <CardDescription>
@@ -78,19 +78,19 @@ export default async function AuthPage({
               </form>
 
               <div className="relative text-center">
-                <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-honey-border" />
-                <span className="relative bg-honey-card px-2 text-xs tracking-[0.14em] text-honey-text/70 uppercase">
+                <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-slate-200" />
+                <span className="relative bg-white/70 px-2 text-xs tracking-[0.14em] text-slate-400 uppercase">
                   Or use email
                 </span>
               </div>
 
               <form action={signInWithPasswordAction} className="space-y-3">
                 <label className="block space-y-2">
-                  <span className="text-sm font-medium text-honey-card-text">Email</span>
+                  <span className="text-sm font-medium text-slate-900">Email</span>
                   <Input name="email" type="email" autoComplete="email" required disabled={!authEnabled} />
                 </label>
                 <label className="block space-y-2">
-                  <span className="text-sm font-medium text-honey-card-text">Password</span>
+                  <span className="text-sm font-medium text-slate-900">Password</span>
                   <Input
                     name="password"
                     type="password"
@@ -112,7 +112,7 @@ export default async function AuthPage({
             </CardContent>
           </Card>
 
-          <Card className="border-honey-primary/30 bg-honey-card shadow-[0_0_40px_-24px_rgba(247,206,134,0.35)]">
+          <Card className="border-cyan-200/40 shadow-[0_8px_30px_rgb(6,182,212,0.08)]">
             <CardHeader>
               <CardTitle>Create your account</CardTitle>
               <CardDescription>
@@ -122,11 +122,11 @@ export default async function AuthPage({
             <CardContent className="space-y-5">
               <form action={signUpWithPasswordAction} className="space-y-3">
                 <label className="block space-y-2">
-                  <span className="text-sm font-medium text-honey-card-text">Email</span>
+                  <span className="text-sm font-medium text-slate-900">Email</span>
                   <Input name="email" type="email" autoComplete="email" required disabled={!authEnabled} />
                 </label>
                 <label className="block space-y-2">
-                  <span className="text-sm font-medium text-honey-card-text">Password</span>
+                  <span className="text-sm font-medium text-slate-900">Password</span>
                   <Input
                     name="password"
                     type="password"
@@ -141,14 +141,14 @@ export default async function AuthPage({
                 </Button>
               </form>
 
-              <div className="rounded-xl border border-honey-border bg-honey-muted p-4 text-sm text-honey-text">
-                <p className="mb-2 inline-flex items-center gap-2 text-honey-card-text">
-                  <Mail className="size-4 text-honey-primary-text" />
+              <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-4 text-sm text-slate-500">
+                <p className="mb-2 inline-flex items-center gap-2 text-slate-700">
+                  <Mail className="size-4 text-cyan-500" />
                   Email verification may be required depending on your Supabase settings.
                 </p>
-                <p className="inline-flex items-center gap-2 text-honey-card-text">
-                  <ShieldCheck className="size-4 text-honey-primary-text" />
-                  Add <code className="rounded border border-honey-border bg-honey-card px-1 py-0.5">/auth/callback</code> to allowed
+                <p className="inline-flex items-center gap-2 text-slate-700">
+                  <ShieldCheck className="size-4 text-cyan-500" />
+                  Add <code className="rounded border border-slate-200 bg-white/80 px-1 py-0.5">/auth/callback</code> to allowed
                   redirect URLs in Supabase Auth.
                 </p>
               </div>

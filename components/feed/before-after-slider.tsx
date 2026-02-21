@@ -59,7 +59,7 @@ export function BeforeAfterSlider({
   };
 
   return (
-    <div className="relative mt-4 rounded-xl border border-honey-border bg-honey-muted/50 p-2">
+    <div className="relative mt-4 rounded-xl border border-slate-200 bg-slate-100/50 p-2">
       <div
         ref={sliderRef}
         className="relative h-56 overflow-hidden rounded-lg touch-none select-none sm:h-64"
@@ -90,15 +90,15 @@ export function BeforeAfterSlider({
           </div>
         </div>
 
-        <div className="absolute top-3 left-3 rounded-full border border-white/25 bg-white/10 px-2.5 py-1 text-[10px] font-semibold tracking-[0.2em] text-white backdrop-blur-md">
+        <div className="absolute top-3 left-3 rounded-full border border-white/20 bg-black/60 px-2.5 py-1 text-[10px] font-bold tracking-widest text-white backdrop-blur-md">
           {beforeLabel}
         </div>
-        <div className="absolute top-3 right-3 rounded-full border border-white/25 bg-white/10 px-2.5 py-1 text-[10px] font-semibold tracking-[0.2em] text-white backdrop-blur-md">
+        <div className="absolute top-3 right-3 rounded-full border border-white/20 bg-black/60 px-2.5 py-1 text-[10px] font-bold tracking-widest text-white backdrop-blur-md">
           {afterLabel}
         </div>
 
         <div
-          className="pointer-events-none absolute inset-y-0 z-20 w-px bg-honey-primary/85"
+          className="pointer-events-none absolute inset-y-0 z-20 w-px bg-white/80"
           style={{ left: `${position}%` }}
         />
 
@@ -107,7 +107,7 @@ export function BeforeAfterSlider({
           aria-label="Adjust before and after comparison"
           onPointerDown={handlePointerDown}
           className={cn(
-            "animate-wiggle absolute top-1/2 z-30 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-honey-primary bg-honey-card text-honey-primary-text shadow-[0_0_22px_rgba(247,206,134,0.35)] transition hover:scale-105 active:scale-95",
+            "animate-wiggle absolute top-1/2 z-30 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/30 transition hover:scale-105 active:scale-95 border-none",
             isDragging && "scale-105",
           )}
           style={{ left: `${position}%` }}

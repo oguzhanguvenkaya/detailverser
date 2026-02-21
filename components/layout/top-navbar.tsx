@@ -26,23 +26,23 @@ export function TopNavbar({ user, authEnabled }: TopNavbarProps) {
     typeof user?.user_metadata?.avatar_url === "string" ? user.user_metadata.avatar_url : undefined;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-honey-border/50 bg-honey-bg/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/80 bg-white/70 backdrop-blur-2xl shadow-[0_1px_3px_rgb(0,0,0,0.04)]">
       <div className="mx-auto flex h-16 max-w-[1600px] items-center gap-3 px-4 lg:px-6">
         <Link
           href="/"
-          className="group flex shrink-0 items-center gap-2 text-sm font-semibold text-honey-card-text transition-all hover:text-honey-primary-text hover:-translate-y-0.5 active:scale-95"
+          className="group flex shrink-0 items-center gap-2 text-sm font-semibold text-slate-900 transition-all hover:text-cyan-600 hover:-translate-y-0.5 active:scale-95"
         >
-          <Sparkles className="size-4 text-honey-primary transition-transform duration-300 group-hover:scale-125" />
+          <Sparkles className="size-4 text-cyan-500 transition-transform duration-300 group-hover:scale-125" />
           <span className="text-base tracking-wide">DetailVerse</span>
         </Link>
 
         <div className="hidden flex-1 px-4 md:flex">
           <label className="relative mx-auto w-full max-w-2xl">
-            <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-honey-text/50" />
+            <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-slate-400" />
             <Input
               aria-label="Global search"
               placeholder="Search products, guides, or ask AI..."
-              className="h-10 rounded-full border-honey-border bg-honey-muted/50 pl-9 transition-all focus-visible:bg-honey-card focus-visible:shadow-sm shadow-inner"
+              className="h-10 rounded-full border-slate-200 bg-slate-50/80 pl-9 transition-all focus-visible:bg-white focus-visible:shadow-sm"
             />
           </label>
         </div>
@@ -51,24 +51,24 @@ export function TopNavbar({ user, authEnabled }: TopNavbarProps) {
           <button
             type="button"
             aria-label="Search"
-            className="group inline-flex size-10 items-center justify-center rounded-full border border-honey-border bg-honey-card/50 text-honey-text transition-all hover:border-honey-primary hover:bg-honey-primary/10 hover:text-honey-primary-text active:scale-95 md:hidden"
+            className="group inline-flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white/60 text-slate-500 transition-all hover:border-cyan-300 hover:bg-cyan-50/50 hover:text-cyan-600 active:scale-95 md:hidden"
           >
             <Search className="size-4" />
           </button>
-          <div className="rounded-full border border-honey-primary/50 bg-honey-primary/20 px-3 py-1 text-xs font-semibold text-honey-primary-text sm:text-sm">
-            AI Credits: {aiCredits} 🪙
+          <div className="rounded-full bg-cyan-50 border border-cyan-200/50 px-3 py-1 text-xs font-semibold text-cyan-700 sm:text-sm">
+            AI Credits: {aiCredits} ✨
           </div>
 
           {!authEnabled ? (
             <Button variant="outline" size="sm" className="rounded-full" disabled>
-              Auth pasif (test modu)
+              Auth disabled (test)
             </Button>
           ) : user ? (
             <>
               <button
                 type="button"
                 aria-label="Notifications"
-                className="group inline-flex size-11 items-center justify-center rounded-full border border-honey-border bg-honey-card/50 text-honey-text transition-all hover:border-honey-primary hover:bg-honey-primary/10 hover:text-honey-primary-text hover:shadow-sm active:scale-95"
+                className="group inline-flex size-11 items-center justify-center rounded-full border border-slate-200 bg-white/60 text-slate-500 transition-all hover:border-cyan-300 hover:bg-cyan-50/50 hover:text-cyan-600 hover:shadow-sm active:scale-95"
               >
                 <Bell className="size-4 transition-transform duration-300 origin-top-[10%] group-hover:rotate-12" />
               </button>

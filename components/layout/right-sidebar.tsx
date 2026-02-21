@@ -15,10 +15,10 @@ export function RightSidebar() {
       aria-label="AI Agent and trending products"
       className="sticky top-20 z-40 hidden h-[calc(100vh-6rem)] overflow-y-auto space-y-4 lg:block"
     >
-      <Card className="border-honey-primary/30 bg-honey-card shadow-sm backdrop-blur-md">
+      <Card className="border-cyan-200/40 shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
         <CardContent className="space-y-4 p-4">
           <div className="space-y-1">
-            <h2 className="text-sm font-semibold tracking-wide text-honey-card-text uppercase">
+            <h2 className="text-sm font-semibold tracking-wide text-slate-900 uppercase">
               Detail Agent AI
             </h2>
             <CardDescription>
@@ -35,7 +35,7 @@ export function RightSidebar() {
             <Input
               aria-label="Ask Detail Agent"
               placeholder="How do I remove water spots safely?"
-              className="h-10 border-honey-primary/30 bg-honey-primary/10"
+              className="h-10 border-cyan-200/50 bg-cyan-50/30"
             />
             <Button type="submit" className="h-10 w-full justify-center rounded-lg active:scale-[0.98]">
               <Sparkles className="size-4" />
@@ -48,7 +48,7 @@ export function RightSidebar() {
       <Card>
         <CardContent className="space-y-4 p-4">
           <div className="space-y-1">
-            <h2 className="text-sm font-semibold tracking-wide text-honey-card-text uppercase">
+            <h2 className="text-sm font-semibold tracking-wide text-slate-900 uppercase">
               Trending Gear
             </h2>
             <CardDescription>Price alerts from products watched by the community.</CardDescription>
@@ -58,11 +58,11 @@ export function RightSidebar() {
 
           <ul className="space-y-3">
             {trendingProducts.map((product) => (
-              <li key={product.id} className="rounded-xl border border-honey-border bg-honey-card p-3">
-                <p className="text-sm font-medium text-honey-card-text">{product.name}</p>
+              <li key={product.id} className="rounded-xl border border-slate-200 bg-white/80 p-3">
+                <p className="text-sm font-medium text-slate-900">{product.name}</p>
                 <div className="mt-2 flex items-center justify-between">
                   <div className="text-sm">
-                    <span className="mr-2 text-honey-text/50 line-through">{product.oldPrice}</span>
+                    <span className="mr-2 text-slate-400 line-through">{product.oldPrice}</span>
                     <span className="font-semibold text-emerald-600">{product.newPrice}</span>
                   </div>
                   <Badge variant="success">{product.dropLabel}</Badge>

@@ -15,7 +15,7 @@ type ThreadCardProps = {
 
 export function ThreadCard({ thread, children }: ThreadCardProps) {
   return (
-    <Card className="relative z-10 group">
+    <Card className="relative z-10 group hover:-translate-y-0.5">
       <CardContent className="space-y-4 p-5">
         <header className="flex items-center gap-3">
           <Avatar>
@@ -24,19 +24,19 @@ export function ThreadCard({ thread, children }: ThreadCardProps) {
           </Avatar>
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="truncate text-sm font-semibold text-honey-card-text">{thread.author.name}</span>
+              <span className="truncate text-sm font-semibold text-slate-900">{thread.author.name}</span>
               <Badge variant="amber">{thread.author.role}</Badge>
             </div>
-            <p className="text-xs text-honey-text/60">{thread.timestamp}</p>
+            <p className="text-xs text-slate-500">{thread.timestamp}</p>
           </div>
         </header>
 
         <div className="space-y-2">
           <Link href={`/thread/${thread.id}`} className="hover:underline">
-            <h2 className="text-xl leading-tight font-bold text-honey-card-text sm:text-2xl transition-colors group-hover:text-honey-primary-text">{thread.title}</h2>
+            <h2 className="text-xl leading-tight font-bold text-slate-900 sm:text-2xl transition-colors group-hover:text-cyan-600">{thread.title}</h2>
           </Link>
           <p
-            className="text-sm leading-relaxed text-honey-text/80"
+            className="text-sm leading-relaxed text-slate-500"
             style={{
               display: "-webkit-box",
               WebkitLineClamp: 2,
@@ -59,7 +59,7 @@ export function ThreadCard({ thread, children }: ThreadCardProps) {
         {children}
 
         {!children && thread.previewImageUrl ? (
-          <div className="relative h-48 overflow-hidden rounded-xl border border-honey-border bg-honey-muted">
+          <div className="relative h-48 overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
             <Image
               src={thread.previewImageUrl}
               alt={`Preview for: ${thread.title}`}
@@ -71,19 +71,19 @@ export function ThreadCard({ thread, children }: ThreadCardProps) {
 
         <footer className="flex items-center justify-between gap-2 pt-1">
           <div className="flex items-center gap-2">
-            <div className="inline-flex items-center rounded-full border border-honey-border bg-honey-muted/50 px-1 py-1 shadow-sm">
+            <div className="inline-flex items-center rounded-full border border-slate-200 bg-white/60 px-1 py-1 shadow-sm">
               <button
                 type="button"
                 aria-label="Upvote"
-                className="group inline-flex size-10 items-center justify-center rounded-full text-honey-text/60 transition-colors hover:bg-honey-card hover:text-honey-primary-text hover:shadow-sm active:scale-95"
+                className="group inline-flex size-10 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-white hover:text-cyan-600 hover:shadow-sm active:scale-95"
               >
                 <ChevronUp className="size-5 transition-transform duration-300 group-hover:-translate-y-0.5" />
               </button>
-              <span className="px-1.5 text-sm font-semibold text-honey-card-text">{thread.votes}</span>
+              <span className="px-1.5 text-sm font-semibold text-slate-900">{thread.votes}</span>
               <button
                 type="button"
                 aria-label="Downvote"
-                className="group inline-flex size-10 items-center justify-center rounded-full text-honey-text/60 transition-colors hover:bg-honey-card hover:text-honey-primary-text hover:shadow-sm active:scale-95"
+                className="group inline-flex size-10 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-white hover:text-cyan-600 hover:shadow-sm active:scale-95"
               >
                 <ChevronDown className="size-5 transition-transform duration-300 group-hover:translate-y-0.5" />
               </button>
@@ -91,7 +91,7 @@ export function ThreadCard({ thread, children }: ThreadCardProps) {
 
             <button
               type="button"
-              className="group inline-flex h-12 items-center gap-2 rounded-full border border-honey-border bg-honey-muted/50 shadow-sm px-4 text-sm font-medium text-honey-text transition-all hover:bg-honey-card hover:border-honey-primary/40 hover:text-honey-primary-text active:scale-95"
+              className="group inline-flex h-12 items-center gap-2 rounded-full border border-slate-200 bg-white/60 shadow-sm px-4 text-sm font-medium text-slate-600 transition-all hover:bg-white hover:border-cyan-200 hover:text-cyan-600 active:scale-95"
             >
               <MessageSquare className="size-4.5 transition-transform duration-300 group-hover:scale-110" />
               {thread.comments}
@@ -101,7 +101,7 @@ export function ThreadCard({ thread, children }: ThreadCardProps) {
           <button
             type="button"
             aria-label="Save thread"
-            className="group inline-flex size-12 items-center justify-center rounded-full border border-honey-border bg-honey-muted/50 text-honey-text/60 shadow-sm transition-all hover:bg-honey-card hover:border-honey-primary/40 hover:text-honey-primary-text active:scale-95"
+            className="group inline-flex size-12 items-center justify-center rounded-full border border-slate-200 bg-white/60 text-slate-400 shadow-sm transition-all hover:bg-white hover:border-cyan-200 hover:text-cyan-600 active:scale-95"
           >
             <Bookmark className="size-5 transition-transform duration-300 group-hover:scale-110" />
           </button>
