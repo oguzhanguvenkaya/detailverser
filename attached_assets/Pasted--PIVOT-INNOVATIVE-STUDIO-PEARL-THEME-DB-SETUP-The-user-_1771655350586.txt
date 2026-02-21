@@ -1,0 +1,42 @@
+# PIVOT: INNOVATIVE "STUDIO PEARL" THEME & DB SETUP
+
+The user strongly disliked the hallucinated "honey" theme AND rejected standard "dark mode". We are pivoting to a highly innovative, ultra-clean, clinical LIGHT theme called "Studio Pearl & Electric Cyan". This represents a high-end, brightly lit auto detailing studio with a wet-look ceramic finish (Apple/iOS style glassmorphism).
+
+## PART 1: THE "STUDIO PEARL" UI OVERHAUL
+Purge ALL `honey-*` classes globally from all components, `tailwind.config.ts`, and `app/globals.css`. 
+
+Enforce this exact design language using standard Tailwind classes:
+
+1. **Global Base:** 
+   - REMOVE `class="dark"` from the `<html>` tag in `app/layout.tsx`.
+   - Set body classes to: `bg-slate-50 text-slate-900 antialiased`.
+2. **Cards & Sidebars (Premium Glassmorphism):**
+   - Replace all card/sidebar background classes with:
+     `bg-white/70 backdrop-blur-2xl border border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-2xl transition-all duration-300`
+3. **Typography:**
+   - Headings & Primary Text: `text-slate-900`
+   - Muted/Secondary Text: `text-slate-500`
+4. **Primary Accents & AI Button (Water/Gloss Effect):**
+   - Interactive primary buttons and the floating AI button MUST use this gradient:
+     `bg-gradient-to-tr from-cyan-500 to-blue-600 text-white font-bold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 active:scale-95 transition-all border-none`
+   - Hovered links/icons: `text-cyan-600`
+5. **Badges/Tags:**
+   - `bg-cyan-50 text-cyan-700 border border-cyan-200/50 rounded-full px-2.5 py-1 font-medium`
+6. **Slider Fix:**
+   - In `before-after-slider.tsx`, the "BEFORE" and "AFTER" labels must be highly visible over any photo: `bg-black/60 backdrop-blur-md text-white border border-white/20 font-bold tracking-widest`.
+
+Do a full sweep of the codebase to apply this light, airy, frosted-glass aesthetic.
+
+## PART 2: REPLIT POSTGRESQL & DRIZZLE ORM SETUP
+Replit handles the `DATABASE_URL`. Do not delete the UI mock data yet. Set up the DB foundation:
+
+1. **Install Dependencies:** 
+   Run `npm i drizzle-orm postgres dotenv` and `npm i -D drizzle-kit tsx`.
+2. **Connection (`db/index.ts`):**
+```typescript
+import { drizzle } from 'drizzle-orm/postgres-js';
+import postgres from 'postgres';
+import * as schema from './schema';
+
+const client = postgres(process.env.DATABASE_URL!);
+export const db = drizzle(client, { schema });
